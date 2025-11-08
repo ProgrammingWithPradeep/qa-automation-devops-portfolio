@@ -1,14 +1,29 @@
-# ci-cd/GitHub-Actions.yml
 name: Run Playwright Tests
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - name: Install dependencies
         run: npm install
-      - name: Run tests
+
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      - name: Run Playwright Tests
         run: npx playwright test
