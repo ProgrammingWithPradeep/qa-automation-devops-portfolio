@@ -69,6 +69,8 @@ jobs:
 
       # ✅ Commit report to main branch
       - name: Commit Playwright report to repo
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
