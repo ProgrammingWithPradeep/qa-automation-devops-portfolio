@@ -1,4 +1,5 @@
 import requests
+import json
 
 def test_weather_api():
     url = "https://api.open-meteo.com/v1/forecast"
@@ -16,3 +17,7 @@ def test_weather_api():
     assert "temperature" in data["current_weather"], "Missing 'temperature' in current_weather"
 
     print("✅ Weather API test passed.")
+    print("RESPONSE: " + json.dumps(data, indent=2))
+
+if __name__ == "__main__":
+    test_weather_api()
