@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="SerenityCucumberSuite" verbose="1" parallel="tests" thread-count="1">
+    <test name="CucumberTests">
+        <classes>
+            <class name="runners.TestNGCucumberRunner"/>
+        </classes>
+    </test>
+</suite>

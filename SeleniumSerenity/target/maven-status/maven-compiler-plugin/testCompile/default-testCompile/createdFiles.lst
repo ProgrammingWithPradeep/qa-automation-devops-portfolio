@@ -1,0 +1,6 @@
+steps\LoginSteps.class
+steps\CheckoutSteps.class
+pages\LoginPage.class
+pages\CartPage.class
+pages\CheckoutPage.class
+runners\TestNGCucumberRunner.class
