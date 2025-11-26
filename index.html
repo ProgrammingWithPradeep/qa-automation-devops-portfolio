@@ -12,50 +12,42 @@
       padding: 0 1rem;
       line-height: 1.6;
       color: #333;
-      position: relative; /* allows absolute/fixed positioning */
+      position: relative;
     }
-    h1, h2 {
-      color: #007acc;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    .section {
-      margin-bottom: 2rem;
-    }
-    .repo-link {
-      margin-top: 3rem;
-      font-weight: bold;
-    }
-    .job-title {
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-    /* Counter styling */
+    h1, h2 { color: #007acc; }
+    ul { padding-left: 1.2rem; }
+    .section { margin-bottom: 2rem; }
+    .repo-link { margin-top: 3rem; font-weight: bold; }
+    .job-title { font-weight: bold; margin-top: 1rem; }
+
+    /* Counter placement */
     .visitor-counter {
-      position: fixed;   /* stays pinned even when scrolling */
-      top: 10px;         /* distance from top */
-      right: 10px;       /* distance from right edge */
-      font-size: 12px;   /* small font */
-      z-index: 9999;     /* ensures it stays above other elements */
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 12px;
+      z-index: 9999;
+    }
+    .visitor-counter .powr-hit-counter {
+      width: 120px; /* adjust width if needed */
     }
   </style>
+  <!-- POWR script -->
+  <script src="https://www.powr.io/powr.js?platform=html" async></script>
 </head>
 <body>
-  <!-- Visitor Counter -->
+  <!-- Visible Visitor Counter (top-right) -->
   <div class="visitor-counter">
-    <a href="https://www.freecounterstat.com" target="_blank" style="text-decoration:none; color:#555;">
-      <img src="https://www.freecounterstat.com/count.php?c=123456" alt="Visitor Counter">
-    </a>
+    <div class="powr-hit-counter" id="portfolio-visitor-counter"></div>
   </div>
 
   <h2>
     <p class="repo-link">
-      🔗 View My GitHub Portfolio on Automation and Devops on 
+      🔗 View My GitHub Portfolio on Automation and Devops on
       <a href="https://github.com/ProgrammingWithPradeep/qa-automation-devops-portfolio" target="_blank">GitHub</a>
     </p>
   </h2>
-  
+
   <h1>About Me</h1>
   <p><strong>Supradeep Peyyeti</strong><br>
   Senior Software Engineer with 18+ years of experience in Software Quality Assurance, Automation Development, DevOps, and leadership across healthcare, finance, insurance, and education domains.</p>
@@ -109,6 +101,5 @@
       <li>USAA – Mar 2008 to Nov 2009 – Insurance</li>
     </ul>
   </div>
-  
 </body>
 </html>
