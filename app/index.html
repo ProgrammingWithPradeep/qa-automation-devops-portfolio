@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>ShipShape Market | QA Automation Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+  <main>
+    <section id="login-view" class="min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900 via-slate-950 to-slate-950 px-4 py-12">
+      <div class="mx-auto grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/80 shadow-2xl shadow-black/40 lg:grid-cols-2">
+        <div class="flex flex-col justify-between bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 p-8 sm:p-12">
+          <a href="/" class="flex items-center gap-3 text-lg font-bold tracking-tight" aria-label="ShipShape Market home">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/15 text-xl">S</span>
+            ShipShape <span class="font-medium text-indigo-100">Market</span>
+          </a>
+          <div class="my-12">
+            <p class="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-indigo-100">Built for builders</p>
+            <h1 class="max-w-md text-4xl font-black leading-tight sm:text-5xl">Good gear for your next great release.</h1>
+            <p class="mt-5 max-w-md text-lg leading-8 text-indigo-100">A tiny commerce playground for practicing dependable end-to-end testing.</p>
+          </div>
+          <p class="text-sm text-indigo-100">One small store. A whole lot of test coverage.</p>
+        </div>
+
+        <div class="p-8 sm:p-12">
+          <div class="mb-8">
+            <p class="text-sm font-semibold uppercase tracking-widest text-indigo-300">Welcome back</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight">Sign in to your account</h2>
+            <p class="mt-2 text-sm text-slate-400">Use your demo account to explore the marketplace.</p>
+          </div>
+          <form id="login-form" class="space-y-5">
+            <div>
+              <label for="username" class="mb-2 block text-sm font-medium text-slate-200">Username</label>
+              <input id="username" name="username" type="text" autocomplete="username" required class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20" placeholder="Enter your username">
+            </div>
+            <div>
+              <label for="password" class="mb-2 block text-sm font-medium text-slate-200">Password</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" required class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20" placeholder="Enter your password">
+            </div>
+            <p id="login-error" class="hidden rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200" role="alert"></p>
+            <button type="submit" class="flex w-full items-center justify-center rounded-xl bg-indigo-500 px-4 py-3 font-semibold text-white shadow-lg shadow-indigo-950/30 transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2 focus:ring-offset-slate-900">
+              Sign in <span class="ml-2" aria-hidden="true">→</span>
+            </button>
+          </form>
+          <p class="mt-6 text-center text-xs text-slate-500">Demo credentials: <span class="font-mono text-slate-300">admin / admin</span></p>
+          <p class="mt-8 border-t border-slate-800 pt-5 text-center text-xs leading-5 text-slate-500">Demo environment only. Do not enter real credentials or payment details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="store-view" class="hidden min-h-screen">
+      <header class="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <a href="/store" class="flex items-center gap-3 font-bold tracking-tight">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-indigo-500 text-lg">S</span>
+            <span>ShipShape <span class="text-slate-400">Market</span></span>
+          </a>
+          <div class="flex items-center gap-3">
+            <span class="hidden text-sm text-slate-400 sm:inline">QA playground</span>
+            <button id="logout-button" type="button" class="rounded-lg border border-slate-700 px-3 py-2 text-sm font-medium text-slate-300 transition hover:border-slate-500 hover:text-white">Sign out</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+        <div class="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">The marketplace</p>
+            <h1 class="mt-2 text-3xl font-black tracking-tight sm:text-4xl">Tools for your daily deploy.</h1>
+            <p class="mt-3 max-w-2xl text-slate-400">Fuel your focus and celebrate every green build with a little something for your desk.</p>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-300">
+            <span class="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400"></span>Catalog is live
+          </div>
+        </div>
+
+        <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <div class="space-y-10">
+            <section aria-labelledby="food-heading">
+              <div class="mb-4 flex items-center justify-between">
+                <h2 id="food-heading" class="text-xl font-bold">Food Items</h2>
+                <span class="text-xs font-medium uppercase tracking-wider text-slate-500">Fuel the workflow</span>
+              </div>
+              <div id="food-products" class="grid gap-4 sm:grid-cols-2">
+                <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-950/20">
+                  <div class="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-indigo-500/10 text-3xl" aria-hidden="true">🍕</div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-indigo-300">Food Items</p>
+                  <h3 class="mt-2 text-lg font-bold text-white">Gourmet DevOps Pizza</h3>
+                  <p class="mt-2 min-h-10 text-sm leading-5 text-slate-400">A handcrafted classic for long release nights.</p>
+                  <div class="mt-5 flex items-center justify-between gap-3 border-t border-slate-800 pt-4">
+                    <span class="text-lg font-bold">$14.99</span>
+                    <button type="button" data-product-id="gourmet-devops-pizza" class="rounded-lg bg-indigo-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300" aria-label="Add Gourmet DevOps Pizza to cart">Add to Cart</button>
+                  </div>
+                </article>
+                <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-950/20">
+                  <div class="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-indigo-500/10 text-3xl" aria-hidden="true">☕</div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-indigo-300">Food Items</p>
+                  <h3 class="mt-2 text-lg font-bold text-white">Automation Fuel Coffee Beans</h3>
+                  <p class="mt-2 min-h-10 text-sm leading-5 text-slate-400">Small-batch beans to keep your test suite moving.</p>
+                  <div class="mt-5 flex items-center justify-between gap-3 border-t border-slate-800 pt-4">
+                    <span class="text-lg font-bold">$18.50</span>
+                    <button type="button" data-product-id="automation-fuel-coffee" class="rounded-lg bg-indigo-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300" aria-label="Add Automation Fuel Coffee Beans to cart">Add to Cart</button>
+                  </div>
+                </article>
+              </div>
+            </section>
+            <section aria-labelledby="general-heading">
+              <div class="mb-4 flex items-center justify-between">
+                <h2 id="general-heading" class="text-xl font-bold">General Items</h2>
+                <span class="text-xs font-medium uppercase tracking-wider text-slate-500">Desk essentials</span>
+              </div>
+              <div id="general-products" class="grid gap-4 sm:grid-cols-2">
+                <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-950/20">
+                  <div class="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-indigo-500/10 text-3xl" aria-hidden="true">🐳</div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-indigo-300">General Items</p>
+                  <h3 class="mt-2 text-lg font-bold text-white">Docker Whale Plushie</h3>
+                  <p class="mt-2 min-h-10 text-sm leading-5 text-slate-400">A soft desk companion for containerized adventures.</p>
+                  <div class="mt-5 flex items-center justify-between gap-3 border-t border-slate-800 pt-4">
+                    <span class="text-lg font-bold">$24.99</span>
+                    <button type="button" data-product-id="docker-whale-plushie" class="rounded-lg bg-indigo-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300" aria-label="Add Docker Whale Plushie to cart">Add to Cart</button>
+                  </div>
+                </article>
+                <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-950/20">
+                  <div class="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-indigo-500/10 text-3xl" aria-hidden="true">📘</div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-indigo-300">General Items</p>
+                  <h3 class="mt-2 text-lg font-bold text-white">Playwright TypeScript Cheat Sheet</h3>
+                  <p class="mt-2 min-h-10 text-sm leading-5 text-slate-400">A quick-reference guide for confident browser tests.</p>
+                  <div class="mt-5 flex items-center justify-between gap-3 border-t border-slate-800 pt-4">
+                    <span class="text-lg font-bold">$9.99</span>
+                    <button type="button" data-product-id="playwright-typescript-cheat-sheet" class="rounded-lg bg-indigo-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300" aria-label="Add Playwright TypeScript Cheat Sheet to cart">Add to Cart</button>
+                  </div>
+                </article>
+              </div>
+            </section>
+            <p id="catalog-error" class="hidden rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200" role="alert"></p>
+          </div>
+
+          <aside class="rounded-2xl border border-slate-800 bg-slate-900 p-5 shadow-xl shadow-black/10 lg:sticky lg:top-24" aria-labelledby="basket-heading">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-300">Your order</p>
+                <h2 id="basket-heading" class="mt-1 text-xl font-bold">Shopping Basket</h2>
+              </div>
+              <span id="cart-count" class="grid h-8 min-w-8 place-items-center rounded-full bg-indigo-500/15 px-2 text-sm font-bold text-indigo-200">0</span>
+            </div>
+            <div id="cart-items" class="mt-5 space-y-4">
+              <p id="empty-cart" class="rounded-xl border border-dashed border-slate-700 px-4 py-8 text-center text-sm text-slate-500">Your basket is empty. Add something you love.</p>
+            </div>
+            <div class="mt-5 space-y-3 border-t border-slate-800 pt-4 text-sm">
+              <div class="flex justify-between text-slate-400"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+              <div class="flex justify-between text-slate-400"><span>Estimated Tax (8%)</span><span id="cart-tax">$0.00</span></div>
+              <div class="flex justify-between border-t border-slate-800 pt-3 text-base font-bold text-white"><span>Final Total</span><span id="cart-total">$0.00</span></div>
+            </div>
+            <button id="proceed-button" type="button" disabled class="mt-5 w-full rounded-xl bg-indigo-500 px-4 py-3 font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-500">Proceed to Payment</button>
+            <p class="mt-3 text-center text-xs text-slate-500">Tax is estimated at 8%.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="payment-view" class="hidden min-h-screen px-4 py-10 sm:px-6">
+      <div class="mx-auto max-w-3xl">
+        <button id="back-to-store" type="button" class="mb-8 text-sm font-medium text-indigo-300 hover:text-indigo-200">← Back to marketplace</button>
+        <div class="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-2xl shadow-black/30">
+          <div class="border-b border-slate-800 bg-slate-900/80 px-6 py-7 sm:px-9">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">Secure checkout</p>
+            <h1 class="mt-2 text-3xl font-black">Payment terminal</h1>
+            <p class="mt-2 text-slate-400">Review your order before placing it.</p>
+          </div>
+          <div class="grid gap-8 p-6 sm:p-9 md:grid-cols-[1fr_260px]">
+            <div>
+              <h2 class="font-semibold">Order items</h2>
+              <div id="payment-items" class="mt-4 divide-y divide-slate-800"></div>
+              <div class="mt-5 space-y-2 border-t border-slate-800 pt-4 text-sm">
+                <div class="flex justify-between text-slate-400"><span>Subtotal</span><span id="payment-subtotal">$0.00</span></div>
+                <div class="flex justify-between text-slate-400"><span>Estimated Tax (8%)</span><span id="payment-tax">$0.00</span></div>
+                <div class="flex justify-between pt-2 text-base font-bold"><span>Total due</span><span id="payment-total">$0.00</span></div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-between rounded-2xl border border-indigo-400/20 bg-indigo-500/5 p-5">
+              <div>
+                <div class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-indigo-500/15 text-xl text-indigo-300" aria-hidden="true">↗</div>
+                <h2 class="font-semibold">Demo payment</h2>
+                <p class="mt-2 text-sm leading-6 text-slate-400">This test terminal does not collect card data. Place a mock order to receive your confirmation.</p>
+              </div>
+              <button id="place-order-button" type="button" class="mt-6 w-full rounded-xl bg-indigo-500 px-4 py-3 font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 disabled:cursor-wait disabled:opacity-60">Place order</button>
+            </div>
+          </div>
+          <p id="checkout-error" class="hidden mx-6 mb-6 rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200 sm:mx-9" role="alert"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="success-view" class="hidden min-h-screen items-center justify-center px-4 py-12">
+      <div class="w-full max-w-2xl rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center shadow-2xl shadow-black/30 sm:p-12">
+        <div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-500/15 text-3xl text-emerald-300" aria-hidden="true">✓</div>
+        <p class="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">Order complete</p>
+        <h1 id="ack-header" class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Order Successfully Placed</h1>
+        <p class="mt-4 text-slate-400">Your demo order is confirmed and ready for the next test.</p>
+        <div class="mt-8 rounded-2xl border border-slate-800 bg-slate-950/70 p-5 text-left">
+          <div class="flex flex-col justify-between gap-2 border-b border-slate-800 pb-4 sm:flex-row sm:items-center">
+            <span class="text-sm text-slate-400">Order reference</span>
+            <span id="ack-order-id" class="font-mono font-semibold text-indigo-200"></span>
+          </div>
+          <p id="ack-summary" class="pt-4 text-sm leading-6 text-slate-300"></p>
+        </div>
+        <button id="continue-shopping" type="button" class="mt-8 rounded-xl bg-indigo-500 px-6 py-3 font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300">Continue shopping</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const TAX_RATE = 0.08;
+    let products = {};
+    let basket = {};
+
+    const views = {
+      login: document.getElementById('login-view'),
+      store: document.getElementById('store-view'),
+      payment: document.getElementById('payment-view'),
+      success: document.getElementById('success-view')
+    };
+
+    function showView(name, path) {
+      Object.keys(views).forEach(function (key) {
+        views[key].classList.add('hidden');
+        views[key].classList.remove('flex');
+      });
+      views[name].classList.remove('hidden');
+      if (name === 'login' || name === 'success') {
+        views[name].classList.add('flex');
+      }
+      if (path && window.location.pathname !== path) {
+        window.history.pushState({ view: name }, '', path);
+      }
+    }
+
+    function money(value) {
+      return '$' + Number(value).toFixed(2);
+    }
+
+    function getProduct(productId) {
+      const categories = Object.keys(products);
+      for (let categoryIndex = 0; categoryIndex < categories.length; categoryIndex += 1) {
+        const categoryProducts = products[categories[categoryIndex]];
+        for (let productIndex = 0; productIndex < categoryProducts.length; productIndex += 1) {
+          if (categoryProducts[productIndex].id === productId) {
+            return categoryProducts[productIndex];
+          }
+        }
+      }
+      return null;
+    }
+
+    function renderProducts() {
+      const foodContainer = document.getElementById('food-products');
+      const generalContainer = document.getElementById('general-products');
+      foodContainer.innerHTML = '';
+      generalContainer.innerHTML = '';
+      Object.keys(products).forEach(function (category) {
+        const target = category === 'Food Items' ? foodContainer : generalContainer;
+        products[category].forEach(function (product) {
+          const card = document.createElement('article');
+          card.className = 'group flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-950/20';
+          const icon = document.createElement('div');
+          icon.className = 'mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-indigo-500/10 text-3xl';
+          icon.setAttribute('aria-hidden', 'true');
+          icon.textContent = product.icon;
+          const categoryLabel = document.createElement('p');
+          categoryLabel.className = 'text-xs font-semibold uppercase tracking-widest text-indigo-300';
+          categoryLabel.textContent = category;
+          const title = document.createElement('h3');
+          title.className = 'mt-2 text-lg font-bold text-white';
+          title.textContent = product.name;
+          const description = document.createElement('p');
+          description.className = 'mt-2 min-h-10 text-sm leading-5 text-slate-400';
+          description.textContent = product.description;
+          const footer = document.createElement('div');
+          footer.className = 'mt-5 flex items-center justify-between gap-3 border-t border-slate-800 pt-4';
+          const price = document.createElement('span');
+          price.className = 'text-lg font-bold';
+          price.textContent = money(product.price);
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'rounded-lg bg-indigo-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300';
+          button.textContent = 'Add to Cart';
+          button.setAttribute('aria-label', 'Add ' + product.name + ' to cart');
+          button.setAttribute('data-product-id', product.id);
+          footer.appendChild(price);
+          footer.appendChild(button);
+          card.appendChild(icon);
+          card.appendChild(categoryLabel);
+          card.appendChild(title);
+          card.appendChild(description);
+          card.appendChild(footer);
+          target.appendChild(card);
+        });
+      });
+    }
+
+    function addToBasket(productId) {
+      basket[productId] = (basket[productId] || 0) + 1;
+      renderBasket();
+    }
+
+    ['food-products', 'general-products'].forEach(function (containerId) {
+      document.getElementById(containerId).addEventListener('click', function (event) {
+        const button = event.target.closest('[data-product-id]');
+        if (button) {
+          addToBasket(button.getAttribute('data-product-id'));
+        }
+      });
+    });
+
+    function changeQuantity(productId, amount) {
+      basket[productId] = (basket[productId] || 0) + amount;
+      if (basket[productId] <= 0) {
+        delete basket[productId];
+      }
+      renderBasket();
+    }
+
+    function calculateTotals() {
+      let subtotal = 0;
+      Object.keys(basket).forEach(function (productId) {
+        const product = getProduct(productId);
+        if (product) {
+          subtotal += product.price * basket[productId];
+        }
+      });
+      subtotal = Math.round((subtotal + Number.EPSILON) * 100) / 100;
+      const tax = Math.round((subtotal * TAX_RATE + Number.EPSILON) * 100) / 100;
+      return { subtotal: subtotal, tax: tax, total: subtotal + tax };
+    }
+
+    function renderBasket() {
+      const container = document.getElementById('cart-items');
+      container.innerHTML = '';
+      const productIds = Object.keys(basket);
+      const itemCount = productIds.reduce(function (sum, productId) {
+        return sum + basket[productId];
+      }, 0);
+      document.getElementById('cart-count').textContent = String(itemCount);
+      if (itemCount === 0) {
+        const emptyMessage = document.createElement('p');
+        emptyMessage.id = 'empty-cart';
+        emptyMessage.className = 'rounded-xl border border-dashed border-slate-700 px-4 py-8 text-center text-sm text-slate-500';
+        emptyMessage.textContent = 'Your basket is empty. Add something you love.';
+        container.appendChild(emptyMessage);
+      }
+      productIds.forEach(function (productId) {
+        const product = getProduct(productId);
+        if (!product) {
+          return;
+        }
+        const row = document.createElement('div');
+        row.className = 'flex items-start justify-between gap-3';
+        const details = document.createElement('div');
+        details.className = 'min-w-0';
+        const title = document.createElement('p');
+        title.className = 'truncate text-sm font-medium text-slate-200';
+        title.textContent = product.name;
+        const unit = document.createElement('p');
+        unit.className = 'mt-1 text-xs text-slate-500';
+        unit.textContent = money(product.price) + ' each';
+        details.appendChild(title);
+        details.appendChild(unit);
+        const controls = document.createElement('div');
+        controls.className = 'flex shrink-0 items-center gap-2';
+        const decrease = document.createElement('button');
+        decrease.type = 'button';
+        decrease.className = 'grid h-7 w-7 place-items-center rounded-md border border-slate-700 text-slate-300 hover:border-slate-500';
+        decrease.textContent = '−';
+        decrease.setAttribute('aria-label', 'Remove one ' + product.name);
+        decrease.addEventListener('click', function () {
+          changeQuantity(productId, -1);
+        });
+        const quantity = document.createElement('span');
+        quantity.className = 'min-w-4 text-center text-sm';
+        quantity.textContent = String(basket[productId]);
+        const increase = document.createElement('button');
+        increase.type = 'button';
+        increase.className = 'grid h-7 w-7 place-items-center rounded-md border border-slate-700 text-slate-300 hover:border-slate-500';
+        increase.textContent = '+';
+        increase.setAttribute('aria-label', 'Add one ' + product.name);
+        increase.addEventListener('click', function () {
+          changeQuantity(productId, 1);
+        });
+        controls.appendChild(decrease);
+        controls.appendChild(quantity);
+        controls.appendChild(increase);
+        row.appendChild(details);
+        row.appendChild(controls);
+        container.appendChild(row);
+      });
+      const totals = calculateTotals();
+      document.getElementById('cart-subtotal').textContent = money(totals.subtotal);
+      document.getElementById('cart-tax').textContent = money(totals.tax);
+      document.getElementById('cart-total').textContent = money(totals.total);
+      document.getElementById('proceed-button').disabled = itemCount === 0;
+    }
+
+    function renderPayment() {
+      const container = document.getElementById('payment-items');
+      container.innerHTML = '';
+      Object.keys(basket).forEach(function (productId) {
+        const product = getProduct(productId);
+        if (!product) {
+          return;
+        }
+        const row = document.createElement('div');
+        row.className = 'flex justify-between gap-4 py-3 text-sm';
+        const label = document.createElement('span');
+        label.className = 'text-slate-300';
+        label.textContent = product.name + ' × ' + basket[productId];
+        const amount = document.createElement('span');
+        amount.className = 'shrink-0 font-medium';
+        amount.textContent = money(product.price * basket[productId]);
+        row.appendChild(label);
+        row.appendChild(amount);
+        container.appendChild(row);
+      });
+      const totals = calculateTotals();
+      document.getElementById('payment-subtotal').textContent = money(totals.subtotal);
+      document.getElementById('payment-tax').textContent = money(totals.tax);
+      document.getElementById('payment-total').textContent = money(totals.total);
+    }
+
+    async function loadProducts() {
+      const error = document.getElementById('catalog-error');
+      try {
+        const response = await fetch('/api/products');
+        if (!response.ok) {
+          throw new Error('Catalog request failed with status ' + response.status);
+        }
+        products = await response.json();
+        renderProducts();
+        renderBasket();
+      } catch (requestError) {
+        error.textContent = 'The catalog could not be loaded. Please refresh and try again.';
+        error.classList.remove('hidden');
+      }
+    }
+
+    document.getElementById('login-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const error = document.getElementById('login-error');
+      const button = event.currentTarget.querySelector('button[type="submit"]');
+      error.classList.add('hidden');
+      button.disabled = true;
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+          })
+        });
+        if (!response.ok) {
+          error.textContent = 'The username or password was not recognized.';
+          error.classList.remove('hidden');
+          return;
+        }
+        sessionStorage.setItem('shipshape-authenticated', 'true');
+        showView('store', '/store');
+        await loadProducts();
+      } catch (requestError) {
+        error.textContent = 'Unable to reach the sign-in service. Please try again.';
+        error.classList.remove('hidden');
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    document.getElementById('proceed-button').addEventListener('click', function () {
+      renderPayment();
+      document.getElementById('checkout-error').classList.add('hidden');
+      showView('payment');
+    });
+
+    document.getElementById('back-to-store').addEventListener('click', function () {
+      showView('store', '/store');
+    });
+
+    document.getElementById('place-order-button').addEventListener('click', async function (event) {
+      const button = event.currentTarget;
+      const error = document.getElementById('checkout-error');
+      const items = Object.keys(basket).map(function (productId) {
+        return { id: productId, quantity: basket[productId] };
+      });
+      error.classList.add('hidden');
+      button.disabled = true;
+      try {
+        const response = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(items)
+        });
+        const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.error || 'Checkout failed with status ' + response.status);
+        }
+        document.getElementById('ack-header').textContent = 'Order Successfully Placed';
+        document.getElementById('ack-order-id').textContent = result.orderId;
+        document.getElementById('ack-summary').textContent = result.summary + ' Subtotal: ' + money(result.subtotal) + '. Tax: ' + money(result.tax) + '. Total: ' + money(result.total) + '.';
+        basket = {};
+        renderBasket();
+        showView('success');
+      } catch (requestError) {
+        error.textContent = requestError.message || 'Unable to complete checkout. Please try again.';
+        error.classList.remove('hidden');
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    document.getElementById('continue-shopping').addEventListener('click', function () {
+      showView('store', '/store');
+    });
+
+    document.getElementById('logout-button').addEventListener('click', function () {
+      sessionStorage.removeItem('shipshape-authenticated');
+      basket = {};
+      renderBasket();
+      showView('login', '/login');
+    });
+
+    window.addEventListener('popstate', function () {
+      if (window.location.pathname === '/store') {
+        showView('store');
+        loadProducts();
+      } else {
+        showView('login');
+      }
+    });
+
+    if (window.location.pathname === '/store') {
+      showView('store');
+      loadProducts();
+    } else {
+      showView('login');
+    }
+  </script>
+</body>
+</html>
