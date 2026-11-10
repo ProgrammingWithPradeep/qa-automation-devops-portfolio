@@ -10,7 +10,7 @@ permissions:
   contents: write
   
 jobs:
-  test:
+  typescript-playwright:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.43.1-jammy
@@ -99,12 +99,15 @@ jobs:
       # 2. Run Playwright tests using the container name "storefront"
       - name: Run Python Playwright end-to-end tests
         run: |
+          REG="mcr.microsoft"
+          IMG="${REG}.com/playwright/python:v1.49.0-noble"
           docker run --rm --network qa-net \
             -e STOREFRONT_BASE_URL=http://storefront:8000 \
             -v "${{ github.workspace }}/playwright-python:/tests" \
             -w /tests \
-            ://microsoft.com \
+            "$IMG" \
             bash -c "pip install -r requirements.txt && pytest -c pytest.ini tests -v"
+
 
       # 3. Clean up the container and network
       - name: Cleanup Docker resources
