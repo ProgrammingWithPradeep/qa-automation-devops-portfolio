@@ -100,7 +100,7 @@ jobs:
       - name: Run Python Playwright end-to-end tests
         run: |
           REG="mcr.microsoft"
-          IMG="${REG}.com/playwright/python:v1.65.0-noble"
+          IMG="${REG}.com/playwright/python:v1.64.1-noble"
           docker run --rm --network qa-net \
             -e STOREFRONT_BASE_URL=http://storefront:8000 \
             -v "${{ github.workspace }}/playwright-python:/tests" \
