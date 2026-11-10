@@ -100,7 +100,7 @@ jobs:
       - name: Run Python Playwright end-to-end tests
         run: |
           REG="mcr.microsoft"
-          IMG="${REG}.com/playwright/python:v1.49.0-noble"
+          IMG="${REG}.com/playwright/python:v1.65.0-noble"
           docker run --rm --network qa-net \
             -e STOREFRONT_BASE_URL=http://storefront:8000 \
             -v "${{ github.workspace }}/playwright-python:/tests" \
@@ -142,7 +142,14 @@ jobs:
 
       - name: Run Serenity and Selenium tests
         working-directory: SeleniumSerenity
-        run: mvn --batch-mode test -Denvironment=ci -Dwebdriver.chrome.driver=/usr/bin/chromedriver
+        run: |
+          mvn --batch-mode test \
+            -Denvironment=ci \
+            -Dwebdriver.driver=chrome \
+            -Dwebdriver.chrome.driver=/usr/bin/chromedriver \
+            -Dchrome.capabilities.goog:chromeOptions.binary=/usr/bin/chromium \
+            -Dchrome.switches="--headless=new;--no-sandbox;--disable-dev-shm-usage;--disable-gpu;--window-size=1920,1080"
+      
 
       - name: Upload Serenity and Cucumber reports
         if: always()
